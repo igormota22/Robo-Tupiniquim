@@ -34,12 +34,12 @@ System.Console.WriteLine("ROBO TUPINIQUIM");
 System.Console.WriteLine("---------------------");
 
 
-int x,y; //cordenadas
+int x, y; //cordenadas
 char c; //direção (norte = N, sul = s, oeste = O, leste = L)
 string? d; //comandos do robo (e = esquerda, d = direita, m = mover)
 
 
-System.Console.Write("Informe a posição inicial (x,y) e a direção que o robo esta (d): ");
+System.Console.Write("Informe a posição inicial (x,y) e a direção que o robo esta (c): ");
 var input = Console.ReadLine()?.Split(' ');
 x = int.Parse(input[0]);
 y = int.Parse(input[1]);
@@ -54,5 +54,54 @@ e os acessando com os indices (x = int.Parse(input[0])) e assim por diante
 System.Console.Write("Informe os comandos do robo:");
 d = Console.ReadLine()?.ToUpper();
 
+Console.Clear();
 System.Console.WriteLine($"Posição Inicial: {x},{y},{c}");
-System.Console.WriteLine($"Comandos: {d}");
+
+char[] direcoes = { 'N', 'L', 'S', 'O' };
+int indice = -1;
+
+for (int i = 0; i < direcoes.Length; i++)
+{
+    if (direcoes[i] == c)
+    {
+        indice = i;
+        break;
+    }
+}
+
+/*
+crie um vetor com as direcoes possiveis (N,L,O,S) e o fiz percorrer um loop
+para sempre preencher o inicio dele com a direção informada pelo usuario na variavel "c"
+o - 1 é para caso o valor nao esteja dentro das opcoes de direcao
+*/
+
+for (int i = 0; i < d.Length; i++)
+{
+    char comandos = d[i];
+
+    if (comandos == 'E')
+    {
+        indice = (indice - 1 + 4) % 4;
+    }
+    else if (comandos == 'D')
+    {
+        indice = (indice + 1) % 4;
+    }
+    else if (comandos == 'M')
+    {
+        if (direcoes[indice] == 'N') y++;
+        if (direcoes[indice] == 'S') y--;
+        if (direcoes[indice] == 'L') x++;
+        if (direcoes[indice] == 'O') x--;
+    }
+}
+
+/*
+criei outro loop do tamanho da string dos comandos e dentro dele crie outro vetor char
+para que cada letra seja interpretada como um comando diferente.
+no caso do comando ser E o calculo faz que a direcao sempre volte um ou seja, N vai para O e assim por diante.
+no caso de de ser D faz o calculo para sempre avançar uma direcao, entao N vira L e assim segue.
+no caso de M as posicoes X e Y sao incrementadas ou decrementadas de acordo com a direcao que o robo esta
+*/
+
+System.Console.WriteLine($"Posicao final: {x},{y},{direcoes[indice]}");
