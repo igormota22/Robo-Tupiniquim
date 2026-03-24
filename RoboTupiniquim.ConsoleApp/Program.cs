@@ -38,6 +38,33 @@ public class Program
         System.Console.WriteLine("---------------------");
     }
 
+    static (int, int, char, string) LerDadosDeEntrada()
+    {
+        int x, y; //cordenadas
+        char c; //direção (norte = N, sul = s, oeste = O, leste = L)
+        string? d; //comandos do robo (e = esquerda, d = direita, m = mover)
+
+
+          System.Console.Write("Informe a posição inicial (x,y) e a direção que o robo esta (c): ");
+        var input = Console.ReadLine()?.Split(' ');
+        x = int.Parse(input[0]);
+        y = int.Parse(input[1]);
+        c = char.Parse(input[2].ToUpper());
+
+        /*
+        Cria uma variavel para ler a linha inteira e usa .Split para retornar um array de 
+        substrings com base no caracter (' ') permitindo ler os valores numa mesma linha
+        e os acessando com os indices (x = int.Parse(input[0])) e assim por diante
+        */
+
+        System.Console.Write("Informe os comandos do robo:");
+        d = Console.ReadLine()?.ToUpper();
+
+        System.Console.WriteLine($"Posição Inicial: {x},{y},{c}");
+        return (x,y,c,d);
+
+    }
+
     static char[] ExecutarComandos(int x, int y, char c, string d, int indice)
     {
        char[] direcoes = ['N','L','S','O'];
@@ -82,31 +109,10 @@ public class Program
     public static void Main(string[] args)
     {
 
-        int x, y; //cordenadas
-        char c; //direção (norte = N, sul = s, oeste = O, leste = L)
-        string? d; //comandos do robo (e = esquerda, d = direita, m = mover)
         int indice = -1;
 
-
         ExibirCabecalho();
-        System.Console.Write("Informe a posição inicial (x,y) e a direção que o robo esta (c): ");
-        var input = Console.ReadLine()?.Split(' ');
-        x = int.Parse(input[0]);
-        y = int.Parse(input[1]);
-        c = char.Parse(input[2].ToUpper());
-
-        /*
-        Cria uma variavel para ler a linha inteira e usa .Split para retornar um array de 
-        substrings com base no caracter (' ') permitindo ler os valores numa mesma linha
-        e os acessando com os indices (x = int.Parse(input[0])) e assim por diante
-        */
-
-        System.Console.Write("Informe os comandos do robo:");
-        d = Console.ReadLine()?.ToUpper();
-
-        Console.Clear();
-        System.Console.WriteLine($"Posição Inicial: {x},{y},{c}");
-
+        var (x,y,c,d) = LerDadosDeEntrada();        
         /*
         crie um vetor com as direcoes possiveis (N,L,O,S) e o fiz percorrer um loop
         para sempre preencher o inicio dele com a direção informada pelo usuario na variavel "c"
