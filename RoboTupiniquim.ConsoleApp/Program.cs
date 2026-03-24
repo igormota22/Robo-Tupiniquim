@@ -45,7 +45,7 @@ public class Program
         string? d; //comandos do robo (e = esquerda, d = direita, m = mover)
 
 
-          System.Console.Write("Informe a posição inicial (x,y) e a direção que o robo esta (c): ");
+        System.Console.Write("Informe a posição inicial (x,y) e a direção que o robo esta (c): ");
         var input = Console.ReadLine()?.Split(' ');
         x = int.Parse(input[0]);
         y = int.Parse(input[1]);
@@ -119,6 +119,7 @@ public class Program
         o - 1 é para caso o valor nao esteja dentro das opcoes de direcao
         */
       char[] direcoes = ExecutarComandos(x,y,c,d,indice);
+      Console.ReadLine();
         /*
         criei outro loop do tamanho da string dos comandos e dentro dele crie outro vetor char
         para que cada letra seja interpretada como um comando diferente.
