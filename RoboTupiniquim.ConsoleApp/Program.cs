@@ -38,32 +38,31 @@ public class Program
         System.Console.WriteLine("---------------------");
     }
 
-    static (int, int, char, string) LerDadosDeEntrada()
+   static (int, int, char, string) LerDadosDeEntrada()
+{
+    while (true)
     {
-        int x, y; //cordenadas
-        char c; //direção (norte = N, sul = s, oeste = O, leste = L)
-        string? d; //comandos do robo (e = esquerda, d = direita, m = mover)
-
-
         System.Console.Write("Informe a posição inicial (x,y) e a direção que o robo esta (c): ");
         var input = Console.ReadLine()?.Split(' ');
-        x = int.Parse(input[0]);
-        y = int.Parse(input[1]);
-        c = char.Parse(input[2].ToUpper());
-
-        /*
-        Cria uma variavel para ler a linha inteira e usa .Split para retornar um array de 
-        substrings com base no caracter (' ') permitindo ler os valores numa mesma linha
-        e os acessando com os indices (x = int.Parse(input[0])) e assim por diante
-        */
-
-        System.Console.Write("Informe os comandos do robo:");
-        d = Console.ReadLine()?.ToUpper();
-
-        System.Console.WriteLine($"Posição Inicial: {x},{y},{c}");
-        return (x,y,c,d);
-
+        if (input != null && input.Length == 3)
+        {
+            if (int.TryParse(input[0], out int x) && int.TryParse(input[1], out int y))
+            {
+                if (char.TryParse(input[2].ToUpper(), out char c))
+                {
+                    System.Console.Write("Informe os comandos do robo: ");
+                    string? d = Console.ReadLine()?.ToUpper();
+                    if (d != null)
+                    {
+                        System.Console.WriteLine($"Posição Inicial: {x},{y},{c}");
+                        return (x, y, c, d);
+                    }
+                }
+            }
+        }
+        System.Console.WriteLine("Entrada inválida. Tente novamente.");
     }
+}
 
     static char[] ExecutarComandos(int x, int y, char c, string d, int indice)
     {
