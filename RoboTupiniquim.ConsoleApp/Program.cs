@@ -58,7 +58,7 @@ public class Program
     {
         while (true)
         {
-            System.Console.Write("Informe a posição inicial (x,y) e a direção que o robo esta (c): ");
+            System.Console.Write("Informe a posição inicial (x,y) e a direção que o robo esta (N,S,L,O): ");
             var input = Console.ReadLine()?.Split(' ');
             if (input != null && input.Length == 3)
             {
