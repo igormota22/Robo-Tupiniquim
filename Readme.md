@@ -1,6 +1,6 @@
 #  ROBO TUPINIQUIM
 
-![]()
+![](docs/RoboTupiniquim.ConsoleApp_jn46d4OZH0.gif)
 
 ## Introdução
 

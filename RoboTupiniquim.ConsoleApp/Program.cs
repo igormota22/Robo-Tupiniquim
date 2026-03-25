@@ -41,8 +41,7 @@ public class Program
 
         char[] direcoes = ExecutarComandos(x, y, c, d, indice);
 
-        System.Console.WriteLine("Pressione ENTER para finalizar");
-        Console.ReadLine();
+       
 
 
     }
