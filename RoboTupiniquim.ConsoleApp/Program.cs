@@ -36,7 +36,6 @@ public class Program
 
         int indice = -1;
 
-        ExibirCabecalho();
         var (x, y, c, d) = Robo.LerDadosDeEntrada();
 
         char[] direcoes = Robo.ExecutarComandos(x, y, c, d, indice);
@@ -44,15 +43,6 @@ public class Program
     }
 
 
-  private  static void ExibirCabecalho()
-    {
-        System.Console.WriteLine("---------------------");
-        System.Console.WriteLine("ROBO TUPINIQUIM");
-        System.Console.WriteLine("---------------------");
-    }
-
-
-
-
+  
 
 }

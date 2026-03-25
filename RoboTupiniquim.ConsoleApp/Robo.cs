@@ -32,6 +32,7 @@ public class Robo
 {
     public static (int, int, char, string) LerDadosDeEntrada()
     {
+        ExibirCabecalho();
         while (true)
         {
             System.Console.Write("Informe a posição inicial (x,y) e a direção que o robo esta (N,S,L,O): ");
@@ -110,5 +111,12 @@ public class Robo
         System.Console.WriteLine($"Posição final: {x},{y},{direcoes[indice]}");
         return direcoes;
 
-    }   
+    }  
+
+      private static void ExibirCabecalho()
+    {
+        System.Console.WriteLine("---------------------");
+        System.Console.WriteLine("ROBO TUPINIQUIM");
+        System.Console.WriteLine("---------------------");
+    } 
 }
